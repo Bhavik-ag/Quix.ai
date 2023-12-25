@@ -17,6 +17,18 @@ export function activate(context: vscode.ExtensionContext) {
   explainSelectionButton.show();
 
   context.subscriptions.push(
+    vscode.commands.registerTextEditorCommand(
+      "insertTextAtCursor",
+      (editor, edit, text) => {
+        console.log("insertTextAtCursor", text);
+        editor.selections.forEach((selection) => {
+          edit.insert(selection.active, text);
+        });
+      }
+    )
+  );
+
+  context.subscriptions.push(
     vscode.commands.registerCommand("quix.explainSelection", () => {
       const { activeTextEditor } = vscode.window;
 

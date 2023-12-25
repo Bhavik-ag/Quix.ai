@@ -1,6 +1,6 @@
 {
-  "name": "quix",
-  "displayName": "Quix",
+  "name": "quix.ai",
+  "displayName": "Quix AI",
   "description": "",
   "version": "0.0.1",
   "engines": {
@@ -10,6 +10,7 @@
     "Other"
   ],
   "activationEvents": [
+    "onCommand:quix.explainSelection",
     "onView:quix-sidebar"
   ],
   "main": "./dist/extension.js",
@@ -18,7 +19,7 @@
       "activitybar": [
         {
           "id": "quix-sidebar-view",
-          "title": "Quix",
+          "title": "Quix AI",
           "icon": "media/icon.svg"
         }
       ]
@@ -28,13 +29,36 @@
         {
           "type": "webview",
           "id": "quix-sidebar",
-          "name": "Quix",
+          "name": "Quix AI",
           "icon": "media/icon.svg",
           "contextualTitle": "Quix"
         }
       ]
     },
-    "commands": []
+    "commands": [
+      {
+        "command": "quix.explainSelection",
+        "category": "Quix",
+        "title": "Explain This"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorTextFocus",
+          "command": "quix.explainSelection",
+          "group": "0_quix"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "quix.explainSelection",
+        "key": "ctrl+shift+e",
+        "mac": "cmd+shift+e",
+        "when": "editorTextFocus"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
@@ -71,5 +95,8 @@
     "typescript": "^5.3.3",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "marked": "^11.1.0"
   }
 }

@@ -21,6 +21,18 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
 
     webviewView.webview.onDidReceiveMessage(async (data) => {
       switch (data.type) {
+        case "insertTextAtCursor": {
+          if (!data.value) {
+            return;
+          }
+          vscode.commands.executeCommand("insertTextAtCursor", data.value);
+          break;
+        }
+        case "explainSelection": {
+          console.log("explainSelection", data.value);
+          vscode.commands.executeCommand("explainSelection");
+          break;
+        }
         case "onInfo": {
           if (!data.value) {
             return;
