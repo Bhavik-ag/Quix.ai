@@ -10,6 +10,7 @@
     "Other"
   ],
   "activationEvents": [
+    "onCommand:quix.suggestComment",
     "onCommand:quix.explainSelection",
     "onView:quix-sidebar"
   ],
@@ -40,6 +41,16 @@
         "command": "quix.explainSelection",
         "category": "Quix",
         "title": "Explain This"
+      },
+      {
+        "command": "quix.suggestComment",
+        "category": "Quix",
+        "title": "Suggest Comment"
+      },
+      {
+        "command": "quix.promptSelection",
+        "category": "Quix",
+        "title": "Prompt Selection"
       }
     ],
     "menus": {
@@ -47,6 +58,16 @@
         {
           "when": "editorTextFocus",
           "command": "quix.explainSelection",
+          "group": "0_quix"
+        },
+        {
+          "when": "editorTextFocus",
+          "command": "quix.suggestComment",
+          "group": "0_quix"
+        },
+        {
+          "when": "editorTextFocus",
+          "command": "quix.promptSelection",
           "group": "0_quix"
         }
       ]
@@ -57,8 +78,30 @@
         "key": "ctrl+shift+e",
         "mac": "cmd+shift+e",
         "when": "editorTextFocus"
+      },
+      {
+        "command": "quix.suggestComment",
+        "key": "ctrl+shift+c",
+        "mac": "cmd+shift+c",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "quix.promptSelection",
+        "key": "ctrl+shift+m",
+        "mac": "cmd+shift+m",
+        "when": "editorTextFocus"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Quix AI",
+      "properties": {
+        "quix.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Gemini AI API Key"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",

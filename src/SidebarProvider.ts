@@ -28,11 +28,6 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           vscode.commands.executeCommand("insertTextAtCursor", data.value);
           break;
         }
-        case "explainSelection": {
-          console.log("explainSelection", data.value);
-          vscode.commands.executeCommand("explainSelection");
-          break;
-        }
         case "onInfo": {
           if (!data.value) {
             return;
@@ -90,7 +85,7 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           const tsvscode = acquireVsCodeApi();
         </script>
 			</head>
-      <body>
+      <body class="main-container">
 				<script nonce="${nonce}" src="${scriptUri}"></script>
 			</body>
 			</html>`;
