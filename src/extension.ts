@@ -41,10 +41,16 @@ export function activate(context: vscode.ExtensionContext) {
         activeTextEditor.selection
       );
 
+      // Get active text editor language
+      const language = activeTextEditor.document.languageId;
+
       // send a message to our Sidebar webview
       sidebarProvider._view?.webview.postMessage({
         type: "explain-selection",
-        value: text,
+        value: {
+          text: text,
+          language: language,
+        },
       });
     })
   );

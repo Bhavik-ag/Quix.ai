@@ -4,6 +4,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import terser from "@rollup/plugin-terser";
 import sveltePreprocess from "svelte-preprocess";
 import typescript from "@rollup/plugin-typescript";
+import css from "rollup-plugin-import-css";
 import path from "path";
 import fs from "fs";
 
@@ -50,7 +51,7 @@ export default fs
           sourceMap: !production,
           inlineSources: !production,
         }),
-
+        css(),
         // In dev mode, call `npm run start` once
         // the bundle has been generated
         // !production && serve(),

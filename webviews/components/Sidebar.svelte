@@ -1,28 +1,44 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { marked } from 'marked'
+    import { marked } from 'marked';
 
     let loading = false;
     let text = "";
     const API_KEY = "";
 
+    const getTypingEffect = (result : string) => {
+        // Wait for 1 second before typing
+        text = "";
+
+        const interval = setInterval(() => {
+                            text = result.substring(0, text.length + 1);
+                            if (text === result) {
+                                clearInterval(interval);
+                            }
+                        }, 20);
+    }
+
     onMount(() => {
         window.addEventListener('message', event => {
             const message = event.data; 
+            let result = ""
 
             switch (message.type) {
                 case 'explain-selection':
                     
-                    if(message.value.length > 0){
-                        text = message.value;
+                    if(message.value.text.length > 0){
+                        text = message.value.text;
+                        const language = message.value.language;
 
-                        generateContent("python",text).then(data => {
+                        generateContent(language,text).then(data => {
                             loading = false;
-                            text = data.candidates[0].content.parts[0].text;
+                            result = data.candidates[0].content.parts[0].text;
+                            getTypingEffect(result);
                         });
                     }
                     else {
-                        text = "Please select a code block to explain";
+                        result = "Please select a code block to explain.";
+                        getTypingEffect(result);
                     }
                     break;
             }
@@ -43,7 +59,7 @@
                             parts: [
                                 {
                                     // Write a promt to explain the given code provided the language of the code for an AI
-                                    text: `Given a code block in ${language} programming language, explain what this code does, what is the purpose of this code in English in not more than 100 words. \n\n ${code}`
+                                    text: `Given the programming language ${language} and the following code snippet: ${code} summarize the overall meaning and functionality of the code. In your explanation, try to write in a non-technical manner. Do not describe what each line does in the code, but rather provide a high-level understanding of the overall functionality of the code snippet and the purpose it serves within the context of the program."`
                                 }
                             ]
                         }
@@ -60,7 +76,11 @@
 
 <style>
     .markdown-container {
+        position: relative;
         margin: 5px;
+        padding-top: 10px;
+        border: 1px solid var(--vscode-input-border);   
+        background-color: var(--vscode-editor-background);
     }
 
     .logo {
@@ -91,18 +111,31 @@
 		margin: 2px;
         padding: 10px;
 	}
-
-    .button-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+    
+    .divider {
+        width: 100%;
+        background-color: var(--vscode-input-border); 
+        height: 1px;
+        margin-bottom: 15px;
     }
 
-    .btn {
+    .copy-btn {
+        all: unset;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        padding: 5px;
         border-radius: 4px;
-        margin: 6px 12px;  
-        width: 100%;
-        box-sizing: border-box;
+        background-color: var(--vscode-checkbox-background);
+        color: var(--vscode-checkbox-foreground);
+        border: 1px solid var(--vscode-checkbox-border);
+        font-size: 12px;
+        cursor: pointer;
+    }
+
+    .copy-btn:hover {
+        border: 1px solid var(--vscode-checkbox-selectBorder);
+        background-color: var(--vscode-checkbox-selectBackground);
     }
 
 </style>
@@ -119,14 +152,18 @@
 "**Welcome to Quix AI!** I'm here to assist you in accomplishing tasks faster.\n \n Powered by AI, I'm designed to enhance efficiency, though surprises and errors may occur. Please verify any generated code or suggestions."
 )}</div>
 
-<!-- Add some info on how to use the extension -->
 <div>
     <div class="preview">{@html marked(
-        "- Explain Selection - `Ctrl+Shift+E`"
+        "- Explain Selection - Ctrl+Shift+E"
         )}</div>
 </div>
 
+<!-- Add a small div at top right corner of markdown-container with a copy button. On click, copy the text to clipboard. -->
+
 {#if text.length > 0}
+
+    <div class="divider"/>
+
     {#if loading}
         <div class="markdown-container">
             <div class="preview">Loading...</div>
@@ -135,10 +172,10 @@
 
     {#if !loading}
         <div class="markdown-container">
+            <button class="copy-btn" on:click={() => navigator.clipboard.writeText(text)}>
+                <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M4 4l1-1h5.414L14 6.586V14l-1 1H5l-1-1V4zm9 3l-3-3H5v10h8V7z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M3 1L2 2v10l1 1V2h6.414l-1-1H3z"/></svg>
+            </button>
             <div class="preview">{@html marked(text)}</div>
-            <div class="button-container">
-                <button class="btn btn-primary" on:click={() => navigator.clipboard.writeText(text)}>Copy</button>
-            </div>
         </div>
     {/if}
-{/if}
+{/if}   
