@@ -42,6 +42,17 @@ a:active {
 code {
   font-size: var(--vscode-editor-font-size);
   font-family: var(--vscode-editor-font-family);
+  background-color: var(--vscode-editor-background);
+}
+
+pre {
+  font-size: var(--vscode-editor-font-size);
+  line-height: 2rem;
+  margin: 10px 2px;
+  border-radius: 5px;
+  padding: 10px;
+  overflow-x: scroll;
+  background-color: var(--vscode-editor-background);
 }
 
 button {

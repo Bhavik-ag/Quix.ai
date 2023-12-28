@@ -15,7 +15,7 @@ export const getExplanation = async (
           {
             parts: [
               {
-                text: `Given the programming language ${language} and the following code snippet: ${code} summarize the overall meaning and functionality of the code. In your explanation, try to write in a non-technical manner. Do not describe what each line does in the code, but rather provide a high-level understanding of the overall functionality of the code snippet and the purpose it serves within the context of the program."`,
+                text: `Given the programming language ${language} and the code snippet: ${code}, provide a concise summary of what the code does in plain English, in no more than 200 words. Include the overall meaning and functionality of the code, rather than describing each line individually. Explain the purpose of the code within the context of the program. Avoid technical jargon and make it easy for a non-technical audience to understand.`,
               },
             ],
           },
@@ -45,7 +45,7 @@ export const getComment = async (
           {
             parts: [
               {
-                text: `Given the programming language ${language} and the following code snippet: ${code} Please write a short, one-line comment that clearly explains the high-level purpose of the code. This comment will help new programmers understand the code and make it easier for them to contribute to the project"`,
+                text: `Given the programming language ${language} and the following code snippet: ${code} Provide a single-line comment that describes the purpose and functionality of the code in a clear and concise manner. The comment should explain what the code does, any assumptions or constraints, and any potential edge cases that need to be considered.`,
               },
             ],
           },
@@ -76,7 +76,7 @@ export const answerPrompt = async (
           {
             parts: [
               {
-                text: `Given the programming language ${language} and the following code snippet: ${code} Answer the following prompt: ${prompt}. Try to answer the prompt satifying the user's request."`,
+                text: `Given the programming language ${language} and the following code snippet: ${code} I would like you to address the following prompt - ${prompt}. Please provide a comprehensive and detailed response, use a clear and concise language and avoid going off-topic or introducing unrelated information`,
               },
             ],
           },

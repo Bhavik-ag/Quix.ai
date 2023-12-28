@@ -4,9 +4,6 @@ import { SidebarProvider } from "./SidebarProvider";
 export function activate(context: vscode.ExtensionContext) {
   const sidebarProvider = new SidebarProvider(context.extensionUri);
 
-  // Get apikey from configuration
-  const apikey = vscode.workspace.getConfiguration().get("quix.apiKey");
-
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider("quix-sidebar", sidebarProvider)
   );
@@ -34,6 +31,16 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand("quix.explainSelection", () => {
+      // Get apikey from configuration
+      const apikey = vscode.workspace.getConfiguration().get("quix.apiKey");
+
+      if (!apikey) {
+        vscode.window.showInformationMessage(
+          "No API key set. Please set your API key in the Quix extension settings."
+        );
+        return;
+      }
+
       const { activeTextEditor } = vscode.window;
 
       if (!activeTextEditor) {
@@ -72,6 +79,16 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand("quix.suggestComment", () => {
+      // Get apikey from configuration
+      const apikey = vscode.workspace.getConfiguration().get("quix.apiKey");
+
+      if (!apikey) {
+        vscode.window.showInformationMessage(
+          "No API key set. Please set your API key in the Quix extension settings."
+        );
+        return;
+      }
+
       const { activeTextEditor } = vscode.window;
 
       if (!activeTextEditor) {
@@ -110,6 +127,16 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand("quix.promptSelection", () => {
+      // Get apikey from configuration
+      const apikey = vscode.workspace.getConfiguration().get("quix.apiKey");
+
+      if (!apikey) {
+        vscode.window.showInformationMessage(
+          "No API key set. Please set your API key in the Quix extension settings."
+        );
+        return;
+      }
+
       const { activeTextEditor } = vscode.window;
 
       if (!activeTextEditor) {
