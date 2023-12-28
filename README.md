@@ -1,7 +1,7 @@
 # Quix AI
 
 <p align="center">
-<img src="https://github.com/Bhavik-ag/Quix.ai/blob/master/media/logo.png" width="200px" />
+<img src="media/logo.png" width="100px" />
 </p>
 
 ## Quix AI - Gemini Pro Powered VSCode Extension
@@ -21,5 +21,3 @@ Quix.ai is an intelligent VSCode extension powered by AI, designed to revolution
 3. **Custom AI-Powered Prompts:**
    - Empower your coding process by selecting code and posing custom prompts.
    - Leverage AI to interact dynamically with your codebase for tailored insights.
-
-### Happy coding with Quix.ai!

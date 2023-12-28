@@ -1,14 +1,22 @@
 {
-  "name": "quix.ai",
+  "name": "quixai",
   "displayName": "Quix AI",
-  "description": "",
+  "description": "Quix.ai is an intelligent VSCode extension powered by Gemini Pro AI, designed to revolutionize your coding experience.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.85.1"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Programming Languages",
+    "Education"
   ],
+  "icon": "media/logo.png",
+  "publisher": "bhavikagarwal",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bhavik-ag/Quix.ai.git"
+  },
   "activationEvents": [
     "onCommand:quix.suggestComment",
     "onCommand:quix.explainSelection",
@@ -104,13 +112,13 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run package",
-    "compile": "webpack",
-    "watch": "concurrently \"rollup -c -w\" \"webpack --watch\"",
+    "vscode:prepublish": "npm run compile",
+    "compile": "rollup -c && webpack --mode production",
+    "watch": "concurrently \"rollup -c -w\" \"webpack --mode development --watch\"",
     "package": "webpack --mode production --devtool hidden-source-map",
     "compile-tests": "tsc -p . --outDir out",
     "watch-tests": "tsc -p . -w --outDir out",
-    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "vscode-test"
   },
