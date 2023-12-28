@@ -162,6 +162,7 @@
     <input
       bind:value={prompt}
       type="text"
+      autofocus
       placeholder="Add prompt to your code"
     />
     <button class="submit-button" type="button" on:click={handleSubmit}>
@@ -228,6 +229,7 @@
   input {
     padding: 10px 10px;
     border-radius: 3px;
+    margin-top: 10px;
     border: 1px solid var(--vscode-input-border);
   }
 

@@ -1,9 +1,3 @@
-# Quix AI
-
-<p align="center">
-<img src="media/logo.png" width="100px" />
-</p>
-
 ## Quix AI - Gemini Pro Powered VSCode Extension
 
 Quix.ai is an intelligent VSCode extension powered by AI, designed to revolutionize your coding experience. It seamlessly adds a layer of brilliance to your workflow by automating code comments, summarization and documentation. 

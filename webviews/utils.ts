@@ -15,7 +15,7 @@ export const getExplanation = async (
           {
             parts: [
               {
-                text: `Given the programming language ${language} and the code snippet: ${code}, provide a concise summary of what the code does in plain English, in no more than 200 words. Include the overall meaning and functionality of the code, rather than describing each line individually. Explain the purpose of the code within the context of the program. Avoid technical jargon and make it easy for a non-technical audience to understand.`,
+                text: `Given the programming language ${language} and the code snippet: ${code}, provide a concise summary of what the code does in plain English, in no more than 150 words. Include the overall meaning and functionality of the code, rather than describing each line individually. Explain the purpose of the code within the context of the program. Avoid technical jargon and make it easy for a non-technical audience to understand.`,
               },
             ],
           },
@@ -76,7 +76,7 @@ export const answerPrompt = async (
           {
             parts: [
               {
-                text: `Given the programming language ${language} and the following code snippet: ${code} I would like you to address the following prompt - ${prompt}. Please provide a comprehensive and detailed response, use a clear and concise language and avoid going off-topic or introducing unrelated information`,
+                text: `Given the programming language ${language} and the following code snippet: ${code} I would like you to address the following prompt - ${prompt}.`,
               },
             ],
           },
