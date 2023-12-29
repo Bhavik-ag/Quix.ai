@@ -30,9 +30,10 @@ Quix.ai is an intelligent VSCode extension powered by AI, designed to revolution
   
 ### Video Tutorial
 
-[![Getting Started with Quix AI](https://github.com/Bhavik-ag/Quix.ai/assets/73033511/fcf996ce-761f-4458-88e3-ae896af97278)](https://github.com/Bhavik-ag/Quix.ai/assets/73033511/0016bcc3-172f-4b6a-837f-ae3cbcc97306)
+[![Getting Started with Quix AI](https://github.com/Bhavik-ag/Quix.ai/assets/73033511/fcf996ce-761f-4458-88e3-ae896af97278)](https://github.com/Bhavik-ag/Quix.ai/assets/73033511/c0437ea8-3e86-4662-9e7e-d7c02316bebb)
 
 
 Watch this video tutorial for a step-by-step guide on getting started with Quix AI.
 
 Now, you're all set to enjoy the benefits of Quix AI in your coding projects. Happy coding!
+
