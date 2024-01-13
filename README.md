@@ -1,5 +1,9 @@
 ## Quix AI - Gemini Pro Powered VSCode Extension
 
+<div align=center >
+<img width="150px" src="https://github.com/Bhavik-ag/Quix.ai/assets/73033511/316e9e44-b79a-4395-a40e-2ca9df7bfdc4"/>
+</div>
+
 Quix.ai is an intelligent VSCode extension powered by AI, designed to revolutionize your coding experience. It seamlessly adds a layer of brilliance to your workflow by automating code comments, summarization and documentation. 
 
 ## Features
@@ -25,6 +29,7 @@ Quix.ai is an intelligent VSCode extension powered by AI, designed to revolution
    - Head over to the Visual Studio Code Marketplace and install the Quix AI extension. Search for "Quix AI" and click "Install."
 
 3. **Add API Key in VSCode Settings:**
+
    - Open Visual Studio Code and navigate to the settings panel (`Ctrl+,` or `Cmd+,`).
    - Find the Quix AI extension settings and input your Google AI API key.
   
